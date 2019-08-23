@@ -24,4 +24,4 @@
 
 > 在cn.pxy.ysframework.web.Controller这个包下写有测试用的Controller，若想要根据这个来做一些业务，可以根据模仿这个来写。
 
-> 关于具体项目具体情况我会些一篇博客来介绍这个框架。[此处占位](www.baidu.com)
+> 关于项目具体情况我写了一篇博客来介绍。[点击跳转](https://blog.csdn.net/sheypang/article/details/100046050)
