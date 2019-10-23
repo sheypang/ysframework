@@ -1,6 +1,6 @@
 # 当前版本V1.1
 # ysframework
-本项目是基于SpringBoot的REST快速开发基础框架
+本项目是基于SpringBoot的REST快速开发基础框架，在thymeleafVersion分支中集成了Thymeleaf模板引擎，是非前后端分离版本。
 
 # 简介
 
@@ -17,11 +17,11 @@ SpringBoot开启Http2协议，速度更加快速了。
 
 > 集成Swagger2自动生成文档。
 
-> 集成异常统一处理、Json数据处理、消息类封装等等常用功能。
+> 集成异常统一处理、Json数据处理、消息类封装等工具类。
 
-> All in Model，发挥Spring Data JPA长处，数据库根据实体逆向生成。
+> 添加CORS跨域支持，解决乱码问题
 
-> 权限框架使用Shiro，通过注解来判断权限，不打注解是不会开启Shrio的权限判定的。
+> 权限框架使用自定义注解开发
 
 
 # 使用说明
