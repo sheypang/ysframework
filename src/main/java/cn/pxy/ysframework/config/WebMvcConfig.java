@@ -7,12 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.sun.jdi.connect.Connector;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -28,46 +26,38 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Resource
     private PermissionInterceptor permissionInterceptor;
+
     /**
      * 添加跨域支持
+     *
      * @param registry
      */
     @Override
     protected void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "OPTIONS","PUT","DELETE")
+                .allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .maxAge(3600);
         super.addCorsMappings(registry);
     }
 
-    /**
-     * 解决swagger2 404问题，添加资源映射
-     * @param registry
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //将所有/static/** 访问都映射到classpath:/static/ 目录下
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        //swagger2
-        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        super.addResourceHandlers(registry);
-    }
+
     /**
      * 权限拦截器
+     *
      * @param registry
      */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(permissionInterceptor).addPathPatterns("/**").excludePathPatterns("/Login");
+        //registry.addInterceptor(permissionInterceptor).addPathPatterns("/**").excludePathPatterns("/Login");
         super.addInterceptors(registry);
     }
 
     /**
      * 解决乱码问题
+     *
      * @param converters
      */
     @Override
@@ -92,5 +82,20 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 //        converter.setFeatures(SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullNumberAsZero,
 //                SerializerFeature.WriteNullBooleanAsFalse, SerializerFeature.WriteNullListAsEmpty);
         converters.add(converter);
+
+    }
+
+    /**
+     * WebMvcConfigurationSupport导致默认配置失效
+     * 故需要重新配置资源映射
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/resources/")
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("classpath:/public/");
+        super.addResourceHandlers(registry);
     }
 }

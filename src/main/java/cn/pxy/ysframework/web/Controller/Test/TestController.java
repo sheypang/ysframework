@@ -1,4 +1,4 @@
-package cn.pxy.ysframework.web.Controller;
+package cn.pxy.ysframework.web.Controller.Test;
 
 import cn.pxy.ysframework.annotation.RequiredPermission;
 import cn.pxy.ysframework.utils.Message;

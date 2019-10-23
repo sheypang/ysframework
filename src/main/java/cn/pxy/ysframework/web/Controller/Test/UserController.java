@@ -1,4 +1,4 @@
-package cn.pxy.ysframework.web.Controller;
+package cn.pxy.ysframework.web.Controller.Test;
 
 import cn.pxy.ysframework.annotation.RequiredPermission;
 import cn.pxy.ysframework.utils.*;
@@ -7,7 +7,6 @@ import cn.pxy.ysframework.web.Entity.YSFUser;
 import cn.pxy.ysframework.web.Service.IAuthenticationService;
 import cn.pxy.ysframework.web.Service.IYSFUserService;
 import com.alibaba.fastjson.JSON;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -18,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/User")
-@Api(value = "api/User", description = "用户控制器")
 public class UserController {
 
     @Autowired

@@ -1,4 +1,4 @@
-package cn.pxy.ysframework.web.Controller;
+package cn.pxy.ysframework.web.Controller.Test;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
