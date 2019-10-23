@@ -1,3 +1,4 @@
+# 当前版本V1.1
 # ysframework
 本项目是基于SpringBoot的REST快速开发基础框架
 
