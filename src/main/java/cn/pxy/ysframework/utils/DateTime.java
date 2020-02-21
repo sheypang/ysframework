@@ -16,7 +16,7 @@ public class DateTime {
    }
 
     /**
-     * 返回此刻之后多少秒的时间
+     * 返回此刻之后多少毫秒时间
      * @param afterTime 将返回此刻+afterTime
      */
     public DateTime(long afterTime){
